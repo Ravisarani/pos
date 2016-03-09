@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 14, 2014 11:33:34 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hib.ItemHasCategory" table="item_has_category" catalog="auto_service">
+        <id name="IHsCatId" type="int">
+            <column name="i_hs_cat_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="category" class="hib.Category" fetch="select">
+            <column name="category_id_category" not-null="true" />
+        </many-to-one>
+        <many-to-one name="suppliers" class="hib.Suppliers" fetch="select">
+            <column name="suppliers_id_sup" not-null="true" />
+        </many-to-one>
+        <many-to-one name="type" class="hib.Type" fetch="select">
+            <column name="type_id_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="manufacture" class="hib.Manufacture" fetch="select">
+            <column name="Manufacture_id_manufc" not-null="true" />
+        </many-to-one>
+        <many-to-one name="item" class="hib.Item" fetch="select">
+            <column name="item_id_item" not-null="true" />
+        </many-to-one>
+        <many-to-one name="model" class="hib.Model" fetch="select">
+            <column name="model_id_model" />
+        </many-to-one>
+        <property name="price" type="string">
+            <column name="price" length="45" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="45" />
+        </property>
+        <property name="qty" type="string">
+            <column name="qty" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

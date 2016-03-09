@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DrugEditDlg" widgetVar="DrugEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDrugTitle}">
+            <h:form id="DrugEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{drugController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDrugLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{drugController.selected.id}" title="#{bundle.EditDrugTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditDrugLabel_drugName}" for="drugName" />
+                        <p:inputText id="drugName" value="#{drugController.selected.drugName}" title="#{bundle.EditDrugTitle_drugName}" />
+                        <p:outputLabel value="#{bundle.EditDrugLabel_rate}" for="rate" />
+                        <p:inputText id="rate" value="#{drugController.selected.rate}" title="#{bundle.EditDrugTitle_rate}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{drugController.update}" value="#{bundle.Save}" update="display,:DrugListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DrugEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DrugEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

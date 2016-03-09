@@ -1,0 +1,12 @@
+package vector;
+
+public class HashSet {
+ public static void main(String arg[]) {
+	HashSet h = new HashSet();
+   h.add("b");
+}
+
+
+	
+
+}

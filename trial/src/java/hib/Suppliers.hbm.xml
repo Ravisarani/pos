@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 14, 2014 11:33:34 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hib.Suppliers" table="suppliers" catalog="auto_service">
+        <id name="idSup" type="int">
+            <column name="id_sup" />
+            <generator class="assigned" />
+        </id>
+        <property name="supName" type="string">
+            <column name="sup_name" length="45" />
+        </property>
+        <property name="contactNo" type="string">
+            <column name="contact_no" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="comnyRegNo" type="string">
+            <column name="comny_reg_no" length="45" />
+        </property>
+        <set name="itemHasCategories" table="item_has_category" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="suppliers_id_sup" not-null="true" />
+            </key>
+            <one-to-many class="hib.ItemHasCategory" />
+        </set>
+    </class>
+</hibernate-mapping>

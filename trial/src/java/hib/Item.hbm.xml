@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 14, 2014 11:33:34 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="hib.Item" table="item" catalog="auto_service">
+        <id name="idItem" type="int">
+            <column name="id_item" />
+            <generator class="assigned" />
+        </id>
+        <property name="itName" type="string">
+            <column name="it_name" length="45" />
+        </property>
+        <property name="itColor" type="string">
+            <column name="it_color" length="45" />
+        </property>
+        <set name="itemHasCategories" table="item_has_category" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="item_id_item" not-null="true" />
+            </key>
+            <one-to-many class="hib.ItemHasCategory" />
+        </set>
+    </class>
+</hibernate-mapping>
